@@ -9,11 +9,9 @@ class Country extends Model
 {
     use HasFactory;
 
-    protected $table = 'country';
+    protected $table = 'countries';
 
-    protected $fillable = ['country'];
-
-    
+    protected $fillable = ['name'];   
 
     public static function getAllCountries()
     {

@@ -6,6 +6,12 @@
     </x-slot>
 
     <div class="py-12">
-        @livewire('countries-brands')
+    
+        
+        <x-jet-button>
+            <a class="underline text-sm text-white-600 hover:text-white-900" href="{{ route('countriesbrands') }}">
+                VER TABLA
+            </a>
+        </x-jet-button>
     </div>
 </x-app-layout>
