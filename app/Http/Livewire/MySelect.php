@@ -8,9 +8,22 @@ class MySelect extends Component
 {
     public $records = null;
     public $checkeado = true;
-
+    public $name;
+    
     public function render()
     {
         return view('livewire.my-select');
+    }
+
+    public function updated($name, $value)
+    {
+        if($this->name == "countries"){
+            $this->emit('toggleCountry', $value);
+        }
+
+        if($this->name == "brands"){
+            $this->emit('toggleBrands', $value);
+        }
+        
     }
 }

@@ -14,14 +14,14 @@ class CountriesBrandsController extends Controller
         $country = Country::all();
         $checkCountries = true;
         $checkBrands = true;
-        $countriesAndBrands = CountryBrands::getAllCountriesBrands();
+        //$countriesAndBrands = CountryBrands::getAllCountriesBrands();
         
         return view ("countriesbrands",[
             "brands"=>$brands,
             "countries"=>$country,
             "checkCountries" => $checkCountries,
             "checkBrands" => $checkBrands,
-            "countriesAndBrands" => $countriesAndBrands
+            //"countriesAndBrands" => $countriesAndBrands
         ]);
     }
 }

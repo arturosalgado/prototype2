@@ -34,12 +34,12 @@ class CountryBrands extends Model
             $brands = explode(',', $item->brans_id);
 
             $name_brands = [];
-
+            
             foreach($brands as $ko => $brand){
                 array_push($name_brands, Brands::nameBrand($brand));
             }
 
-            $data[$key] = (object)[
+            $data[$key] = [
                 'country' => $item->dataCountry->name,
                 'brands'  => implode(', ', $name_brands)
             ];

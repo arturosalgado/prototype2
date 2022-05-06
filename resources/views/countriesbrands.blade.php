@@ -6,11 +6,11 @@
     </x-slot>
     
     <div class="py-12">
-        @livewire("my-select",["records"=>$countries, "checkeado" => $checkCountries])
-        @livewire("my-select",["records"=>$brands, "checkeado" => $checkBrands])
+        @livewire("my-select",["records"=>$countries, "checkeado" => $checkCountries, "name" => "countries"])
+        @livewire("my-select",["records"=>$brands, "checkeado" => $checkBrands, "name" => "brands"])
     </div>
     <div class="py-12">
-        @livewire("my-table",["countriesAndBrands"=>$countriesAndBrands, "columnCountry" => $checkCountries, "columnBrand" => $checkBrands])
+        @livewire("my-table")
     </div>
     
 </x-app-layout>
