@@ -16,7 +16,7 @@ return new class extends Migration
         Schema::create('country_brands', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('country_id');
-            $table->string('brans_id');
+            $table->unsignedBigInteger('brans_id');
             $table->timestamps();
         });
     }

@@ -14,23 +14,41 @@ class MyTable extends Component
     public $showBrand = true;
 
     protected $listeners = [
-        'toggleCountry' => 'toggleCountry',
-        'toggleBrands' => 'toggleBrands'
+        'toggleCountry'         => 'toggleCountry',
+        'toggleBrands'          => 'toggleBrands',
+        'toggleSelectedCountry' => 'toggleSelectedCountry',
+        'toggleSelectedBrand'   => 'toggleSelectedBrand'
     ];
 
     public function mount()
     {
-        $this->countriesAndBrands = CountryBrands::getAllCountriesBrands();
+        $select = 'all';
+        $value  = 'all';
+
+        $this->countriesAndBrands = CountryBrands::getAllCountriesBrands( $select, $value );
     }
 
     public function toggleCountry($showCountry)
-    {
+    {;
         $this->showCountry = $showCountry;
     }
 
     public function toggleBrands($showBrand)
     {
         $this->showBrand = $showBrand;
+    }
+    public function toggleSelectedCountry($countriesAndBrands)
+    {
+        $value = $countriesAndBrands;
+
+        $this->countriesAndBrands = CountryBrands::getAllCountriesBrands( 'country', $value );
+    }
+
+    public function toggleSelectedBrand($countriesAndBrands)
+    {
+        $value = $countriesAndBrands;
+
+        $this->countriesAndBrands = CountryBrands::getAllCountriesBrands( 'brand', $value );
     }
 
     public function render()

@@ -10,9 +10,7 @@ class CountriesBrands extends Component
 {
     public $checkCountry = true;
     public $checkBrands = true;
-    public $selectedCountry = null;
-    public $selectedBrands = null;
-    //public $countriesTable = [];
+    
 
     public $message;
 
