@@ -4,6 +4,7 @@ namespace App\Http\Livewire;
 use App\Models\CountryBrands;
 
 use Livewire\Component;
+use Illuminate\Support\Facades\Cache;
 
 class MyTable extends Component
 {
@@ -22,10 +23,7 @@ class MyTable extends Component
 
     public function mount()
     {
-        $select = 'all';
-        $value  = 'all';
-
-        $this->countriesAndBrands = CountryBrands::getAllCountriesBrands( $select, $value );
+        $this->countriesAndBrands = CountryBrands::getAllCountriesBrands();
     }
 
     public function toggleCountry($showCountry)
@@ -39,16 +37,28 @@ class MyTable extends Component
     }
     public function toggleSelectedCountry($countriesAndBrands)
     {
-        $value = $countriesAndBrands;
+        Cache::forget('value_country');
 
-        $this->countriesAndBrands = CountryBrands::getAllCountriesBrands( 'country', $value );
+        Cache::put('value_country', $countriesAndBrands);
+
+        $this->countriesAndBrands = CountryBrands::getAllCountriesBrands();
     }
 
     public function toggleSelectedBrand($countriesAndBrands)
     {
-        $value = $countriesAndBrands;
+        Cache::forget('value_brand');
 
-        $this->countriesAndBrands = CountryBrands::getAllCountriesBrands( 'brand', $value );
+        if( is_array($countriesAndBrands) ){
+
+            if( $countriesAndBrands[0] !== '0'){
+
+                Cache::put('value_brand', $countriesAndBrands);
+
+            }
+
+        }
+
+        $this->countriesAndBrands = CountryBrands::getAllCountriesBrands();
     }
 
     public function render()
